@@ -4,7 +4,6 @@
   "description": "tutorial for cicd with aws lightsail, docker, and github",
   "main": "index.js",
   "scripts": {
-    "test": "\"echo 'Error: no test specified'\""
   },
   "repository": {
     "type": "git",
