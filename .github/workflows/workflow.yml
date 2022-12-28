@@ -13,21 +13,6 @@ env:
 jobs:
   build-service:
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres
-        env:
-          POSTGRES_USER: "postgres"
-          POSTGRES_DB: "postgres"
-          POSTGRES_HOST_AUTH_METHOD: "trust"
-          options: >-
-            --health-cmd pg_isready
-            --health-interval 10s
-            --health-timeout 5s
-            --health-retries 5
-        ports:
-          - 5432:5432
-
     steps:
       - name: checkout
         uses: actions/checkout@v2
@@ -41,11 +26,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-v1-dependencies-
       - run: npm ci
-      - name: Run tests
-        run: npm test
-        env:
-          NODE_ENV: ${{ env.NODE_ENV }}
-          DATABASE_URL: "postgres://postgres@localhost:5432/postgres"
       - name: code coverage
         uses: actions/upload-artifact@v2
         with:
