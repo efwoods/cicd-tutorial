@@ -25,7 +25,6 @@ jobs:
           key: ${{ runner.os }}-v1-dependencies-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ runner.os }}-v1-dependencies-
-      - run: npm ci
       - name: code coverage
         uses: actions/upload-artifact@v2
         with:
